@@ -9,22 +9,13 @@ let ListsSchema = new mongoose.Schema({
     },
     card_positions: {
         type: Array,
-        required: false
+        default: []
     },
     position: {
         type: Number,
-        required: false
-    },
-    created_at: {
-        type: Number,
-        required: false,
-        unique: true,
-    },
-    updated_at: {
-        type: Number,
-        required: false
+        required: true
     }
-})
+}, {timestamps: true})
 
 const list_schema = mongoose.model('Lists', ListsSchema);
 

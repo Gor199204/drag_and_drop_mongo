@@ -1,29 +1,23 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+    listSchema = require('./listsSchemas');
+const Schema = mongoose.Schema;
 
 let CardsSchema = new mongoose.Schema({
-    
+
     title: {
         type: String,
         required: true,
     },
     list_id: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        ref: 'Lists',
+        required: false
     },
     description: {
         type: String,
-        required: true
-    },
-    created_at: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
-    updated_at: {
-        type: Number,
-        required: true
+        default: ""
     }
-})
+}, { timestamps: true })
 
 // module.exports = model('CardsSchema', CardsSchema)
 const card_schema = mongoose.model('Cards', CardsSchema)

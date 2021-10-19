@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 
 let UserSequenceSchemas = new mongoose.Schema({
+    _id: {
+        type: Number,
+        required: true
+    },
     
     sequence: {
         type: Array,

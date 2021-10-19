@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
 
 
 let UsersSchema = new mongoose.Schema({
@@ -26,17 +27,9 @@ let UsersSchema = new mongoose.Schema({
     },
     subscribed_to_cards: {
         type: Array,
-        required: true
-    },
-    created_at: {
-        type: Number,
-        required: false,
-    },
-    updated_at: {
-        type: Number,
-        required: false,
+        default: []
     }
-})
+}, {timestamps: true})
 
 
 const users_schema = mongoose.model('Users', UsersSchema);
