@@ -57,7 +57,9 @@ let { getAllLists, getListById, addList, updateList, removeList } = require('../
  *            title:
  *              type: string
  *            card_positions:
- *              type: string
+ *              type: array
+ *              items:
+ *                type: string
  *            position:
  *              type: number
  *     responses:
@@ -65,10 +67,11 @@ let { getAllLists, getListById, addList, updateList, removeList } = require('../
  *         description: Created
  */
  router.post('/', async (req, res) => {
+     console.log();
     let body = {
-        listName: req.body.listName,
-        list: req.body.list,
-        listContext: req.body.listContext,
+        title: req.body.title,
+        card_positions: req.body.card_positions,
+        position: req.body.position || 1,
     };
     let response = await addList(body);
 
@@ -106,10 +109,10 @@ let { getAllLists, getListById, addList, updateList, removeList } = require('../
  *         description: Created
  */
  router.patch('/:id', async (req, res) => {
-    let listName = null, list = null, listContext = null;
-    if (req.body.listName) {listName = req.body.listName}
-    if (req.body.list) {list = req.body.list}
-    if (req.body.listContext) {listContext = req.body.listContext}
+    let title = null, card_positions = null, position = null;
+    if (req.body.title) {card_positions = req.body.title}
+    if (req.body.card_positions) {list = req.body.card_positions}
+    if (req.body.position) {position = req.body.position}
     let response = await updateList(req.params.id, listName, list, listContext);
 
     if (response.success == true) {

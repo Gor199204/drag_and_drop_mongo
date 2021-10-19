@@ -13,7 +13,8 @@ let ListsSchema = new mongoose.Schema({
     },
     position: {
         type: Number,
-        required: true
+        required: false,
+        default:1
     }
 }, {timestamps: true})
 
